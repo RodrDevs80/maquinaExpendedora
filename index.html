@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Expendedora</title>
+    <link rel="shortcut icon" href="./img/pepsi.svg" type="image/x-icon">
+    <!--Google font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bungee+Tint&family=Orbitron:wght@400..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <main id="maquina" class="maquina">
+        <h1>Maquina Expendedora <img src="./img/pepsi.svg" alt="logo pepsi" width="80px"></h1>
+
+        <div class="pantalla" id="pantalla">
+            <div id="imagen1"><img id="1" src="./img/pepsi.jfif" alt="lata pepsi"></div>
+            <div id="imagen2"><img id="2" src="./img/7up.jfif" alt="lata 7up"></div>
+            <div id="imagen3"><img id="3" src="./img/mirinda.jfif" alt="lata mirinda"></div>
+            <div id="imagen4"><img id="4" src="./img//paso-de-lo-toros.jfif" alt="lata paso de los toros"></div>
+        </div>
+        <h3>Dale un click al producto que deseas comprar <img src="./img/click.svg" alt="hacer click" width="40px"> y
+            luego elige con que billetes o cambio pagaras!✅</h3>
+        <div id="resultado" class="resultado oculto">
+
+        </div>
+        <div id="faltante">
+
+        </div>
+        <br>
+        <button id="btn-reset" class="btn-reset oculto">Volver A Comprar</button>
+        <button id="btn-pagar" class="btn-pagar oculto">Pagar</button>
+        <br>
+    </main>
+    <script src="index.js"></script>
+</body>
+
+</html>
