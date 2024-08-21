@@ -6,7 +6,7 @@
 body,
 html {
   width: 100%;
-  height: 130vh;
+
   background: rgb(255, 0, 9);
   background: -moz-linear-gradient(
     96deg,
@@ -64,6 +64,7 @@ h3 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 60%;
+  min-height: 400px;
   place-items: center;
   border: 2px solid #000;
   margin: 10px;
@@ -81,7 +82,7 @@ h3 {
 }
 
 #imagen1 img {
-  width: 45%;
+  width: 52%;
   cursor: pointer;
 }
 #imagen2 img {
@@ -93,7 +94,7 @@ h3 {
   cursor: pointer;
 }
 #imagen4 img {
-  width: 48%;
+  width: 50%;
   margin-left: 15px;
   cursor: pointer;
 }
@@ -146,4 +147,59 @@ label {
 }
 .oculto {
   display: none;
+}
+@media (max-width: 1115px) {
+  #imagen1 img {
+    width: 65%;
+  }
+  #imagen2 img {
+    width: 111%;
+  }
+  #imagen3 img {
+    width: 90%;
+  }
+  #imagen4 img {
+    width: 66%;
+    margin-left: 30px;
+  }
+}
+@media (max-width: 900px) {
+  h1 {
+    flex-direction: column;
+  }
+  .maquina .pantalla {
+    width: 110%;
+  }
+  .btn-reset {
+    width: 50%;
+    height: 50px;
+  }
+  #imagen1 img {
+    width: 65%;
+  }
+  #imagen2 img {
+    width: 99%;
+  }
+  #imagen3 img {
+    width: 76%;
+  }
+  #imagen4 img {
+    width: 69%;
+    margin-left: 30px;
+  }
+}
+@media (max-width: 600px) {
+  #imagen1 img {
+    width: 55%;
+  }
+  #imagen2 img {
+    width: 99%;
+  }
+  #imagen3 img {
+    width: 77%;
+  }
+  #imagen4 img {
+    width: 57%;
+    margin-left: 18px;
+  }
 }

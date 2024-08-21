@@ -12,26 +12,22 @@ let totalApagar = 0;
 const productos = [{
   id: '1',
   nombre: 'Gaseosa Cola Pepsi en Lata 354 ml',
-  precio: 900,
-  cantidad: 0,
+  precio: 900
 },
 {
   id: '2',
   nombre: 'Gaseosa 7up en Lata 354 ml',
-  precio: 500,
-  cantidad: 0,
+  precio: 500
 },
 {
   id: '3',
   nombre: 'Gaseosa Mirinda en Lata 354 ml',
-  precio: 500,
-  cantidad: 0,
+  precio: 500
 },
 {
   id: '4',
   nombre: 'Gaseosa Paso de los Toros en Lata 269 ml',
-  precio: 600,
-  cantidad: 0,
+  precio: 600
 },
 ]
 const pagoExacto = (cantidad, elemento) => {
@@ -51,20 +47,25 @@ const sobraPago = (elemento, vuelto, cantidad) => {
     `
 }
 
-const verificarPago = (cantidad, pago, precio) => {
+const verificarPago = (cantidad, pago, precio, elemento) => {
   pagoNumber += Number(pago);
   totalApagar = Number(precio) * Number(cantidad);
-  console.log(totalApagar);
+
+  console.log('Pago: ' + pagoNumber);
+  console.log('Total a pagar: ' + totalApagar);
+
   if (pagoNumber == totalApagar) {
     pagoExacto(cantidad, resultado);
     btnPagar.classList.add('oculto');
     divFaltante.classList.add('oculto');
     btnReset.classList.remove('oculto');
     pagoNumber = 0;
+    totalApagar = 0;
   } else if (pagoNumber < totalApagar) {
-    console.log(pagoNumber);
+    console.log('Falta Pagar: ' + (totalApagar - pagoNumber));
     faltaPago(divFaltante, (totalApagar - pagoNumber));
     divFaltante.classList.remove('oculto');
+    elemento.setAttribute('disabled', 'true');
   } else if (pagoNumber > totalApagar) {
     let vuelto = totalApagar - pagoNumber;
     sobraPago(resultado, vuelto);
@@ -72,6 +73,7 @@ const verificarPago = (cantidad, pago, precio) => {
     divFaltante.classList.add('oculto');
     btnReset.classList.remove('oculto');
     pagoNumber = 0;
+    totalApagar = 0;
   }
 }
 
@@ -103,22 +105,24 @@ pantalla.addEventListener('click', (e) => {
             </select>
            `
     }
-    const cantidad = document.getElementById('cantidad');
-    const pago = document.getElementById('pago');
-    if (cantidad && pago) {
-      btnPagar.addEventListener('click', (e) => {
-        console.log(pago.value);
-        verificarPago(cantidad.value, pago.value, productos[idProducto].precio);
-      })
-      btnReset.addEventListener('click', () => {
-        btnReset.classList.add('oculto');
-        console.log(pago.value);
-        pago.value = '';
-        console.log(pago.value);
-        location.reload();
-      })
-    }
   }
-
+  const cantidad = document.getElementById('cantidad');
+  const pago = document.getElementById('pago');
+  if (cantidad && pago) {
+    btnPagar.addEventListener('click', (e) => {
+      console.log(pago.value);
+      verificarPago(cantidad.value, pago.value, productos[idProducto].precio, cantidad);
+    })
+    btnReset.addEventListener('click', () => {
+      btnReset.classList.add('oculto');
+      console.log(pago.value);
+      pago.value = '';
+      cantidad.value = '';
+      cantidad.removeAttribute('disabled');
+      console.log(pago.value);
+      resultado.classList.add('oculto');
+      location.reload();
+    })
+  }
 })
 
